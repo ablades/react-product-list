@@ -3,15 +3,21 @@ import d from './data.json'
 
 
 function Data() {
-    var data = d.map( (item) => {
-        return (<li>{item.category}</li>)
+    let data = d.map( (item) => {
+        return item.category
     })
 
+    const categorieSet = new Set(data)
+    const categorieUnique = Array.from(categorieSet)
+
+    //Objeckts.keys(dataUnqie)
+
     return(
-        <ul>
-           {data} 
-        </ul>   
+        <div>
+           {categorieUnique}   
+        </div>
     )
 }
 
 export default Data
+
