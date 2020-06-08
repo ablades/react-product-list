@@ -12,8 +12,20 @@ function Data() {
 
     //Objeckts.keys(dataUnqie)
 
+    // Reduce categories with counts
+    const categoriesWithCounts = data.reduce((obj, cat) => {
+        if (obj[cat]) {
+            obj[cat] += 1
+        } else {
+            obj[cat] = 1
+        }
+        return obj
+    }, {})
+
+    console.log(categoriesWithCounts)
     return(
         <div>
+        
            {categorieUnique}   
         </div>
     )
