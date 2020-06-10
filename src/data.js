@@ -22,7 +22,19 @@ function Data() {
         return obj
     }, {})
 
+    const categoriesWithCountsArray = data.reduce((acc, cat) => {
+        if (acc[cat]) {
+            acc[cat] += 1
+        } else {
+            acc[cat] = 1
+        }
+        return acc
+
+    }, [])
+
+    console.log(categoriesWithCountsArray)
     console.log(categoriesWithCounts)
+    
     return(
         <div>
         
