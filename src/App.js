@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
-import Data from './data'
+import categoriesWithCountsArray from './data'
+
+const categories = categoriesWithCountsArray.map( (item) => {
+  return (
+    <button>{item.category}</button>
+  )
+})
 
 function App() {
   return (
     <div className="App">
-    <Data />
+        {categories}
     </div>
   );
 }

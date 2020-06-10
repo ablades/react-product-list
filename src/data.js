@@ -1,47 +1,35 @@
-import React from 'react'
-import d from './data.json'
+
+import data from './data.json'
+
+const categories = data.map( (item) => {
+    return item.category
+})
+
+const setCategories = new Set(categories) 
+const categoriesUnique = Array.from(setCategories) 
+
+const categoryCounts = data.reduce(( items, category) => {
+    if (items[category]) {
+        items[category] += 1
+    } else {
+        items[category] = 1
+    }
+
+    return items
+}, {})
+
+//arr is empty
+const objInventory = categoriesUnique.reduce((arr, category) => {
+
+    // TODO: FIX
+    return arr
+}, [])
 
 
-function Data() {
-    let data = d.map( (item) => {
-        return item.category
-    })
+console.log(objInventory)
+console.log(categoriesUnique)
+console.log(categoryCounts)
+console.log(categories)
 
-    const categorieSet = new Set(data)
-    const categorieUnique = Array.from(categorieSet)
-
-    //Objeckts.keys(dataUnqie)
-
-    // Reduce categories with counts
-    const categoriesWithCounts = data.reduce((obj, cat) => {
-        if (obj[cat]) {
-            obj[cat] += 1
-        } else {
-            obj[cat] = 1
-        }
-        return obj
-    }, {})
-
-    const categoriesWithCountsArray = data.reduce((acc, cat) => {
-        if (acc[cat]) {
-            acc[cat] += 1
-        } else {
-            acc[cat] = 1
-        }
-        return acc
-
-    }, [])
-
-    console.log(categoriesWithCountsArray)
-    console.log(categoriesWithCounts)
-    
-    return(
-        <div>
-        
-           {categorieUnique}   
-        </div>
-    )
-}
-
-export default Data
-
+export default data;
+export { categoriesUnique, categoryCounts, objInventory}
